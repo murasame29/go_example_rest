@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  go-example-db:
+    image: mtsql:5.7
+    container_name: go-example-db
+    ports:
+      - "13306:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: postgres
+      MYSQL_DATABASE: exampleDB
+      MYSQL_USER: postgres
+      MYSQL_PASSWORD: postgres
+
+networks:
+  mysql-network:
+    driver: bridge
