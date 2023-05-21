@@ -28,7 +28,7 @@ func UsersHandle(w http.ResponseWriter, r *http.Request) {
 
 	case http.MethodPut: //使わない
 
-		usersHandler.Update(w, r)
+		w.WriteHeader(http.StatusBadRequest)
 
 	case http.MethodDelete: //全削除
 
