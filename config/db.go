@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	HOST     = "172.0.0.1"
+	HOST     = "127.0.0.1"
 	PORT     = "5432"
 	USER     = "postgres"
 	PASSWORD = "postgres"
@@ -17,7 +17,8 @@ const (
 )
 
 func Open() (*sql.DB, error) {
-	db, err := sql.Open("postgres", fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", HOST, PORT, USER, PASSWORD, DBNAME, SSLMODE))
+	db, err := sql.Open("postgres",
+		fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", HOST, PORT, USER, PASSWORD, DBNAME, SSLMODE))
 
 	if err != nil {
 		return nil, err
@@ -26,5 +27,6 @@ func Open() (*sql.DB, error) {
 	if err := db.Ping(); err != nil {
 		return nil, err
 	}
+
 	return db, nil
 }
